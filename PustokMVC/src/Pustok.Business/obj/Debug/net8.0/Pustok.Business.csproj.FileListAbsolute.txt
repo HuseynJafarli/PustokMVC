@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Business.deps.json
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Business.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Business.pdb
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Core.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Data.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Data.pdb
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\bin\Debug\net8.0\Pustok.Core.pdb
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.AssemblyInfo.cs
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.B.602EBFFE.Up2Date
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\refint\Pustok.Business.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.pdb
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\ref\Pustok.Business.dll
