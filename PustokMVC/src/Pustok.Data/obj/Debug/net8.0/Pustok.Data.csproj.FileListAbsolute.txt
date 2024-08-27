@@ -13,3 +13,4 @@ C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Data\obj\Debug\net8.0\Pusto
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Data\obj\Debug\net8.0\refint\Pustok.Data.dll
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Data\obj\Debug\net8.0\Pustok.Data.pdb
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Data\obj\Debug\net8.0\ref\Pustok.Data.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Data\obj\Debug\net8.0\Pustok.Data.sourcelink.json

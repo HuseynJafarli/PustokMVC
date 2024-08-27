@@ -1,14 +1,8 @@
-﻿using Pustok.Business.Services.Interfaces;
-using Pustok.Business.ViewModels.GenreViewModels;
+﻿using Microsoft.EntityFrameworkCore;
+using Pustok.Business.Services.Interfaces;
 using Pustok.Business.ViewModels.SlideViewModels;
 using Pustok.Core.Models;
 using Pustok.Core.Repositories;
-using Pustok.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pustok.Business.Services.Implementations
 {
@@ -47,12 +41,12 @@ namespace Pustok.Business.Services.Implementations
             await _slideRepository.CommitAsync();
         }
 
-        public async Task<ICollection<Genre>> GetAllAsync()
+        public async Task<ICollection<Slide>> GetAllAsync()
         {
             return await _slideRepository.GetAll(null).ToListAsync();
         }
 
-        public async Task<Genre> GetByIdAsync(int id)
+        public async Task<Slide> GetByIdAsync(int id)
         {
             var entity = await _slideRepository.GetByIdAsync(id);
 
@@ -64,7 +58,7 @@ namespace Pustok.Business.Services.Implementations
             return entity;
         }
 
-        public async Task UpdateAsync(int id, GenreUpdateViewModel vm)
+        public async Task UpdateAsync(int id, SlideUpdateViewModel vm)
         {
             var entity = await _slideRepository.GetByIdAsync(id);
 
@@ -72,7 +66,9 @@ namespace Pustok.Business.Services.Implementations
             {
                 throw new NullReferenceException();
             }
-            entity.Name = vm.Name;
+            entity.Title = vm.Title;
+            entity.Description = vm.Description;
+            entity.Order = vm.Order;
             entity.UpdatedAt = DateTime.Now;
             await _slideRepository.CommitAsync();
         }

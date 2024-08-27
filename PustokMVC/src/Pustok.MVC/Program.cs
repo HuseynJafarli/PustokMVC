@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Pustok.Business.Services.Implementations;
+using Pustok.Business.Services.Interfaces;
+using Pustok.Core.Repositories;
 using Pustok.Data.DAL;
+using Pustok.Data.Repositories;
 
 namespace Pustok.MVC
 {
@@ -11,7 +15,8 @@ namespace Pustok.MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<IGenreService, GenreService>();
+            builder.Services.AddScoped<IGenreRepository, GenreRepository>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
@@ -32,7 +37,9 @@ namespace Pustok.MVC
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

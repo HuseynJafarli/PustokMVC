@@ -15,3 +15,4 @@ C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\P
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\refint\Pustok.Business.dll
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.pdb
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\ref\Pustok.Business.dll
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Business\obj\Debug\net8.0\Pustok.Business.sourcelink.json

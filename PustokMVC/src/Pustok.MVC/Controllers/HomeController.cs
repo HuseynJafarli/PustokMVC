@@ -1,27 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
+using Pustok.Business.Services.Interfaces;
 using System.Diagnostics;
 
 namespace Pustok.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IGenreService _genreService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IGenreService genreService)
         {
-            _logger = logger;
+            _genreService = genreService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            var genres = await _genreService.GetAllAsync();
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(genres);
         }
-
 
     }
 }

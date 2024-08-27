@@ -9,6 +9,6 @@ namespace Pustok.Data.DAL
 
         public DbSet<Genre> Genres { get; set; }
 
-        public DbSet<Slide> Slides { get; set; }
+        //public DbSet<Slide> Slides { get; set; }
     }
 }

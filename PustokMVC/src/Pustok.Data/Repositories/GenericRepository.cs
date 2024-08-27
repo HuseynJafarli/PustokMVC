@@ -40,7 +40,7 @@ namespace Pustok.Data.Repositories
                 }
             }
 
-            if (expression.Body != null)
+            if (expression is not null)
             {
                 return query.Where(expression);
             }
