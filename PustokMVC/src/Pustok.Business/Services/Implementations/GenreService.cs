@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pustok.Business.Services.Interfaces;
-using Pustok.Business.ViewModels.GenreViewModels;
+using Pustok.Business.ViewModels;
 using Pustok.Core.Models;
 using Pustok.Core.Repositories;
 

@@ -1,4 +1,4 @@
-﻿using Pustok.Business.ViewModels.GenreViewModels;
+﻿using Pustok.Business.ViewModels;
 using Pustok.Core.Models;
 
 namespace Pustok.Business.Services.Interfaces

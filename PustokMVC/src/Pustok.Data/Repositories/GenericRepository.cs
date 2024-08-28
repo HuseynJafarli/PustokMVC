@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Pustok.Data.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity, new()
+    public class GenericRepository<TEntity> : Core.Repositories.GenericRepository<TEntity> where TEntity : BaseEntity, new()
     {
         private readonly AppDbContext _context;
 

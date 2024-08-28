@@ -1,4 +1,4 @@
-﻿namespace Pustok.Business.ViewModels.GenreViewModels
+﻿namespace Pustok.Business.ViewModels
 {
     public class GenreUpdateViewModel
     {

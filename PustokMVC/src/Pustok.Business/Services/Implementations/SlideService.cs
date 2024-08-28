@@ -19,7 +19,6 @@ namespace Pustok.Business.Services.Implementations
             {
                 Title = vm.Title,
                 Description = vm.Description,
-                Order = vm.Order,
                 IsDeleted = false,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
@@ -68,7 +67,6 @@ namespace Pustok.Business.Services.Implementations
             }
             entity.Title = vm.Title;
             entity.Description = vm.Description;
-            entity.Order = vm.Order;
             entity.UpdatedAt = DateTime.Now;
             await _slideRepository.CommitAsync();
         }

@@ -10,3 +10,4 @@ C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Core\obj\Debug\net8.0\refin
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Core\obj\Debug\net8.0\Pustok.Core.pdb
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Core\obj\Debug\net8.0\ref\Pustok.Core.dll
 C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Core\obj\Debug\net8.0\Pustok.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\PustokMVC\PustokMVC\src\Pustok.Core\obj\Debug\net8.0\Pustok.Core.sourcelink.json

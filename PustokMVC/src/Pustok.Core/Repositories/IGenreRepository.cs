@@ -2,5 +2,5 @@
 
 namespace Pustok.Core.Repositories
 {
-    public interface IGenreRepository: IGenericRepository<Genre> { }
+    public interface IGenreRepository: GenericRepository<Genre> { }
 }

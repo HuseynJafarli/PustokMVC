@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pustok.Core.Repositories
 {
-    public interface IGenericRepository<TEntity> where TEntity : BaseEntity, new()
+    public interface GenericRepository<TEntity> where TEntity : BaseEntity, new()
     {
         Task CreateAsync(TEntity entity);
         Task<TEntity> GetByIdAsync(int id, params string[] includes);

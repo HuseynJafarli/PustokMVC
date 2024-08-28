@@ -2,5 +2,5 @@
 
 namespace Pustok.Core.Repositories
 {
-    public interface ISlideRepository : IGenericRepository<Slide> { }
+    public interface ISlideRepository : GenericRepository<Slide> { }
 }
