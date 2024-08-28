@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pustok.Business.Exceptions;
 using Pustok.Business.Services.Interfaces;
 using Pustok.Business.ViewModels;
 
@@ -15,7 +16,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _genreService.GetAllAsync());
+            return View(await _genreService.GetAllAsync(null));
         }
 
         public IActionResult Create()
@@ -29,13 +30,25 @@ namespace Pustok.MVC.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(genreVM);
             }
 
+            try
+            {
+                await _genreService.CreateAsync(genreVM);
+            }
+            catch (GenreAlreadyExistException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View(genreVM);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(genreVM);
+            }
 
-            await _genreService.CreateAsync(genreVM);
-
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Update(int id)
@@ -61,6 +74,11 @@ namespace Pustok.MVC.Areas.Admin.Controllers
             try
             {
                 await _genreService.UpdateAsync(id, genreVM);
+            }
+            catch(GenreAlreadyExistException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View();
             }
             catch (Exception ex)
             {

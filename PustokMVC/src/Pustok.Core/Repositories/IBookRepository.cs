@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Pustok.Core.Repositories
 {
-    public interface IBookRepository: GenericRepository<Book> { }
+    public interface IBookRepository: IGenericRepository<Book> { }
 }

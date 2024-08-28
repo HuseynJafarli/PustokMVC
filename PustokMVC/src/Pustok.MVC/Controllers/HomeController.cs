@@ -15,7 +15,7 @@ namespace Pustok.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var genres = await _genreService.GetAllAsync();
+            var genres = await _genreService.GetAllAsync(null);
 
             return View(genres);
         }

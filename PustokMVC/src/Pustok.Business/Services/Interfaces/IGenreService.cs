@@ -1,5 +1,6 @@
 ﻿using Pustok.Business.ViewModels;
 using Pustok.Core.Models;
+using System.Linq.Expressions;
 
 namespace Pustok.Business.Services.Interfaces
 {
@@ -11,6 +12,6 @@ namespace Pustok.Business.Services.Interfaces
 
         Task DeleteAsync(int id);
 
-        Task<ICollection<Genre>> GetAllAsync();
+        Task<ICollection<Genre>> GetAllAsync(Expression<Func<Genre,bool>> expression);
     }
 }

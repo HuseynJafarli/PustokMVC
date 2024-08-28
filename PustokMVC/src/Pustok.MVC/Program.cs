@@ -17,6 +17,11 @@ namespace Pustok.MVC
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IGenreService, GenreService>();
             builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+            builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+            builder.Services.AddScoped<IAuthorService, AuthorService>();
+            builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<IBookImageRepository, BookImageRepository>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));

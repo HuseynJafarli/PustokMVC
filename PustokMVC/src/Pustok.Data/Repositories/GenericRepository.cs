@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Pustok.Data.Repositories
 {
-    public class GenericRepository<TEntity> : Core.Repositories.GenericRepository<TEntity> where TEntity : BaseEntity, new()
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity, new()
     {
         private readonly AppDbContext _context;
 
@@ -14,6 +14,9 @@ namespace Pustok.Data.Repositories
         {
             _context = context;
         }
+
+        public DbSet<TEntity> Table => _context.Set<TEntity>();
+
         public async Task<int> CommitAsync()
         {
             return await _context.SaveChangesAsync();
@@ -72,7 +75,7 @@ namespace Pustok.Data.Repositories
             }
         }
 
-        public async Task<TEntity> GetByIdAsync(int id, params string[] includes)
+        public async Task<TEntity> GetByIdAsync(int? id, params string[] includes)
         {
             var query = _context.Set<TEntity>().AsQueryable();
             if (includes.Length > 0) 

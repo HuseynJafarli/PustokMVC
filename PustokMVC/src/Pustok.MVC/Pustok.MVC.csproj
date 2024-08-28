@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Pustok.Business\Pustok.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\books\" />
+  </ItemGroup>
+
 </Project>
