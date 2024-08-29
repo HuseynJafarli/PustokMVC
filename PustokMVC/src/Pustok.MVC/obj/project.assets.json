@@ -2773,7 +2773,10 @@
         },
         "runtime": {
           "bin/placeholder/Pustok.Business.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Pustok.Core/1.0.0": {
         "type": "project",

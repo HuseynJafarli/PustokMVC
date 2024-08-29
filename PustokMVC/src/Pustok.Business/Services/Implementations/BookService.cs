@@ -1,15 +1,138 @@
-﻿using Pustok.Business.Services.Interfaces;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Pustok.Business.Exceptions;
+using Pustok.Business.Services.Interfaces;
+using Pustok.Business.Utilities.Extensions;
 using Pustok.Business.ViewModels;
 using Pustok.Business.ViewModels.BookViewModels;
 using Pustok.Core.Models;
+using Pustok.Core.Repositories;
+using Pustok.Data.Repositories;
+using System.Linq.Expressions;
 
 namespace Pustok.Business.Services.Implementations
 {
     public class BookService : IBookService
     {
-        public Task CreateAsync(BookCreateVM vm)
+        private readonly IBookRepository bookRepository;
+        private readonly IWebHostEnvironment env;
+        private readonly IGenreRepository genreRepository;
+        private readonly IAuthorRepository authorRepository;
+        private readonly IBookImageRepository bookImageRepository;
+
+        public BookService(IBookRepository bookRepository,
+            IWebHostEnvironment env,
+            IGenreRepository genreRepository,
+            IAuthorRepository authorRepository,
+            IBookImageRepository bookImageRepository)
         {
-            throw new NotImplementedException();
+            this.bookRepository = bookRepository;
+            this.env = env;
+            this.genreRepository = genreRepository;
+            this.authorRepository = authorRepository;
+            this.bookImageRepository = bookImageRepository;
+        }
+        public async Task CreateAsync(BookCreateVM vm)
+        {
+            if (await genreRepository.Table.AllAsync(g => g.Id != vm.GenreId))
+            {
+                throw new EntityNotFoundException("GenreId", "Genre is not found");
+            }
+
+            if (await authorRepository.Table.AllAsync(a => a.Id != vm.AuthorId))
+            {
+                throw new EntityNotFoundException("AuthorId", "Author is not found");
+
+            }
+
+
+            Book book = new Book()
+            {
+                Title = vm.Title,
+                Desc = vm.Desc,
+                StockCount = vm.StockCount,
+                SalePrice = vm.SalePrice,
+                CostPrice = vm.CostPrice,
+                Discount = vm.Discount,
+                IsAvalible = vm.IsAvailable,
+                IsDeleted = false,
+                ProductCode = vm.ProductCode,
+                AuthorId = vm.AuthorId,
+                GenreId = vm.GenreId,
+            };
+
+            if (vm.PosterImage != null)
+            {
+                if (vm.PosterImage.ContentType != "image/png")
+                {
+                    throw new FileValidationException("PosterImage", "File type is not correct");
+                }
+                if (vm.PosterImage.Length > 2 * 1024 * 1024)
+                {
+                    throw new FileValidationException("PosterImage", "File size should be less than 2mb");
+                }
+
+                BookImage bookImage = new BookImage()
+                {
+                    ImageUrl = vm.PosterImage.SaveFile(env.WebRootPath, "uploads/books"),
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    IsDeleted = false,
+                    IsPoster = true,
+                    Book = book,
+                };
+                await bookImageRepository.CreateAsync(bookImage);
+            }
+
+            if (vm.HoverImage is not null)
+            {
+                if (vm.HoverImage.ContentType != "image/png")
+                {
+                    throw new FileValidationException("HoverImage", "File type is not correct");
+                }
+                if (vm.HoverImage.Length > 2 * 1024 * 1024)
+                {
+                    throw new FileValidationException("HoverImage", "File size should be less than 2mb");
+                }
+                BookImage bookImage = new BookImage()
+                {
+                    ImageUrl = vm.HoverImage.SaveFile(env.WebRootPath, "uploads/books"),
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    IsDeleted = false,
+                    IsPoster = true,
+                    Book = book,
+                };
+                await bookImageRepository.CreateAsync(bookImage);
+            }
+
+            if (vm.ImageFiles.Count > 0)
+            {
+                foreach (var image in vm.ImageFiles)
+                {
+                    if (image.ContentType != "image/png")
+                    {
+                        throw new FileValidationException("ImageFiles", "File type is not correct");
+                    }
+                    if (image.Length > 2 * 1024 * 1024)
+                    {
+                        throw new FileValidationException("ImageFiles", "File size should be less than 2mb");
+                    }
+                    BookImage bookImage = new BookImage()
+                    {
+                        ImageUrl = image.SaveFile(env.WebRootPath, "uploads/books"),
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        IsDeleted = false,
+                        IsPoster = true,
+                        Book = book,
+                    };
+                    await bookImageRepository.CreateAsync(bookImage);
+                }
+            }
+
+            await bookRepository.CreateAsync(book);
+            await bookRepository.CommitAsync();
         }
 
         public Task DeleteAsync(int id)
@@ -17,9 +140,9 @@ namespace Pustok.Business.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<Book>> GetAllAsync()
+        public async Task<ICollection<Book>> GetAllAsync(Expression<Func<Book, bool>> expression, params string[] includes)
         {
-            throw new NotImplementedException();
+            return await bookRepository.GetAll(expression, includes).ToListAsync();
         }
 
         public Task<Book> GetByIdAsync(int? id)

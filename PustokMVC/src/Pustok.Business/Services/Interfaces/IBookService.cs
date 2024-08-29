@@ -1,6 +1,7 @@
 ﻿using Pustok.Business.ViewModels;
 using Pustok.Business.ViewModels.BookViewModels;
 using Pustok.Core.Models;
+using System.Linq.Expressions;
 
 namespace Pustok.Business.Services.Interfaces
 {
@@ -12,6 +13,6 @@ namespace Pustok.Business.Services.Interfaces
 
         Task DeleteAsync(int id);
 
-        Task<ICollection<Book>> GetAllAsync();
-    }
+        Task<ICollection<Book>> GetAllAsync(Expression<Func<Book, bool>> expression, params string[] includes);
+    } 
 }

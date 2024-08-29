@@ -8061,6 +8061,50 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\07179bbb-f4b3-4bd1-b076-9cc388cf8489Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\07179bbb-f4b3-4bd1-b076-9cc388cf8489Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\3933c470-0e62-45d9-a6bd-71f5e1ee55d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\3933c470-0e62-45d9-a6bd-71f5e1ee55d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\5a5c0e16-596f-4db8-b60e-dc9643492e32Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\5a5c0e16-596f-4db8-b60e-dc9643492e32Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\69460bfe-3478-490a-977f-2261d37621e2Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\69460bfe-3478-490a-977f-2261d37621e2Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\7cdf3122-36f8-446a-9882-65636bb4f309theory roadmap.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\7cdf3122-36f8-446a-9882-65636bb4f309theory roadmap.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\8c6992c0-b581-4a86-b28c-1ef1ef9c58fftheory roadmap.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\8c6992c0-b581-4a86-b28c-1ef1ef9c58fftheory roadmap.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\9bbee3ab-f977-4385-8264-d1f5a1f6527cFretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\9bbee3ab-f977-4385-8264-d1f5a1f6527cFretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\9f03c675-b2ce-43e3-b868-1baf48710b73theory roadmap.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\9f03c675-b2ce-43e3-b868-1baf48710b73theory roadmap.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\c98be73c-c1e2-4308-ac3e-e99cf81b33d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\c98be73c-c1e2-4308-ac3e-e99cf81b33d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\daf6d16b-bd52-4021-ab8b-3e44dad05ce9theory roadmap.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\daf6d16b-bd52-4021-ab8b-3e44dad05ce9theory roadmap.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\ed82afdb-6927-4110-b4e0-a54d00044a0ftheory roadmap.png",
+      "PackagePath": "staticwebassets\\uploads\\books\\ed82afdb-6927-4110-b4e0-a54d00044a0ftheory roadmap.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Pustok.MVC.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
