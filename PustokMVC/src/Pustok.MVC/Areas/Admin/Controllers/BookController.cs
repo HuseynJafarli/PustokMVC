@@ -83,5 +83,94 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            ViewBag.Genres = await genreService.GetAllAsync(x => !x.IsDeleted);
+            ViewBag.Authors = await authorService.GetAllAsync(x => !x.IsDeleted);
+
+            Book data = null;
+
+            try
+            {
+                data = await bookService.GetByExpressionAsync(x => x.Id == id, "BookImages", "Author", "Genre");
+            }
+            catch (EntityNotFoundException)
+            {
+                return View("Error");
+            }
+
+            BookUpdateVM bookVM = new()
+            {
+                Title = data.Title,
+                Desc = data.Desc,
+                StockCount = data.StockCount,
+                AuthorId = data.AuthorId,
+                GenreId = data.GenreId,
+                IsAvailable = data.IsAvalible,
+                Discount = data.Discount,
+                CostPrice = data.CostPrice,
+                SalePrice = data.SalePrice,
+                ProductCode = data.ProductCode,
+                BookImages = data.BookImages
+            };
+
+
+
+            return View(bookVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, BookUpdateVM bookVM)
+        {
+            ViewBag.Genres = await genreService.GetAllAsync(x => !x.IsDeleted);
+            ViewBag.Authors = await authorService.GetAllAsync(x => !x.IsDeleted);
+            Book data = null;
+            try
+            {
+                data = await bookService.GetByExpressionAsync(x => x.Id == id, "BookImages", "Author", "Genre") ?? throw new EntityNotFoundException();
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }
+            bookVM.BookImages = data.BookImages;
+
+            if (id < 1 || id is null)
+            {
+                return View("Error");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(bookVM);
+            }
+
+
+            try
+            {
+                await bookService.UpdateAsync(id, bookVM);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View(bookVM);
+            }
+            catch (FileValidationException ex)
+            {
+                ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View(bookVM);
+            }
+            catch (IdIsNotValid ex)
+            {
+                return View("Error");
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }
+    

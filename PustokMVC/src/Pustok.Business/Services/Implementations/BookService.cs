@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Business.Exceptions;
 using Pustok.Business.Services.Interfaces;
 using Pustok.Business.Utilities.Extensions;
 using Pustok.Business.ViewModels;
-using Pustok.Business.ViewModels.BookViewModels;
 using Pustok.Core.Models;
 using Pustok.Core.Repositories;
 using Pustok.Data.Repositories;
 using System.Linq.Expressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Pustok.Business.Services.Implementations
 {
@@ -171,9 +172,136 @@ namespace Pustok.Business.Services.Implementations
             return bookRepository.Table.AnyAsync(expression);
         }
 
-        public Task UpdateAsync(int? id, BookUpdateVM vm)
+        public async Task UpdateAsync(int? id, BookUpdateVM bookVM)
         {
-            throw new NotImplementedException();
+            Book existBook = await bookRepository.GetByExpressionAsync(x => x.Id == id, "BookImages", "Author", "Genre") ?? throw new IdIsNotValid();
+            bookVM.BookImages = existBook.BookImages;
+
+
+            if (await genreRepository.Table.AllAsync(g => g.Id != bookVM.GenreId))
+            {
+                throw new EntityNotFoundException("GenreId", "Genre is not found");
+            }
+
+            if (await authorRepository.Table.AllAsync(a => a.Id != bookVM.AuthorId))
+            {
+                throw new EntityNotFoundException("AuthorId", "Author is not found");
+
+            }
+
+            if (bookVM.PosterImage != null)
+            {
+                if (!bookVM.PosterImage.ContentType.StartsWith("image/"))
+                {
+                    throw new FileValidationException("PosterImage", "File type is not correct");
+                }
+                if (bookVM.PosterImage.Length > 2 * 1024 * 1024)
+                {
+                    throw new FileValidationException("PosterImage", "File size should be less than 2mb");
+                }
+            }
+
+            if (bookVM.HoverImage is not null)
+            {
+                if (!bookVM.HoverImage.ContentType.StartsWith("image/"))
+                {
+                    throw new FileValidationException("HoverImage", "File type is not correct");
+                }
+                if (bookVM.HoverImage.Length > 2 * 1024 * 1024)
+                {
+                    throw new FileValidationException("HoverImage", "File size should be less than 2mb");
+                }
+            }
+
+
+
+
+            if (bookVM.PosterImage is not null)
+            {
+                BookImage mainImage = new BookImage()
+                {
+                    CreatedAt = DateTime.Now,
+                    IsDeleted = false,
+                    UpdatedAt = DateTime.Now,
+                    IsPoster = true,
+                    ImageUrl = bookVM.PosterImage.SaveFile(env.WebRootPath, "uploads/books")
+                };
+
+                BookImage oldPoster = existBook.BookImages.FirstOrDefault(x => x.IsPoster == true);
+                oldPoster.ImageUrl.DeleteFile(env.WebRootPath, "uploads", "books");
+                existBook.BookImages.Remove(oldPoster);
+                existBook.BookImages.Add(mainImage);
+            }
+
+
+            if (bookVM.HoverImage is not null)
+            {
+                BookImage hoverImage = new BookImage()
+                {
+                    CreatedAt = DateTime.Now,
+                    IsDeleted = false,
+                    UpdatedAt = DateTime.Now,
+                    IsPoster = false,
+                    ImageUrl = bookVM.HoverImage.SaveFile(env.WebRootPath, "uploads/books")
+                };
+                BookImage oldPoster = existBook.BookImages.FirstOrDefault(x => x.IsPoster == true);
+                oldPoster.ImageUrl.DeleteFile(env.WebRootPath, "uploads", "books");
+                existBook.BookImages.Remove(oldPoster);
+                existBook.BookImages.Add(hoverImage);
+            }
+
+            if (bookVM.BookImageIds is null)
+            {
+                bookVM.BookImageIds = [];
+            }
+
+            List<BookImage> deleteImages = existBook.BookImages.Where(pi => !bookVM.BookImageIds.Exists(tId => tId == pi.Id) && pi.IsPoster == null).ToList();
+            foreach (BookImage item in deleteImages)
+            {
+                item.ImageUrl.DeleteFile(env.WebRootPath, "uploads", "books");
+                existBook.BookImages.Remove(item);
+            }
+
+
+            if (bookVM.ImageFiles is not null)
+            {
+
+                foreach (IFormFile image in bookVM.ImageFiles)
+                {
+                    if (!image.ContentType.StartsWith("image/"))
+                    {
+                        throw new FileValidationException("ImageFiles", "File type is not correct");
+                    }
+                    if (image.Length > 2 * 1024 * 1024)
+                    {
+                        throw new FileValidationException("ImageFiles", "File size should be less than 2mb");
+                    }
+                    BookImage additionalPhoto = new BookImage()
+                    {
+                        CreatedAt = DateTime.Now,
+                        IsDeleted = false,
+                        UpdatedAt = DateTime.Now,
+                        IsPoster = null,
+                        ImageUrl = image.SaveFile(env.WebRootPath, "uploads/books")
+                    };
+
+                    existBook.BookImages.Add(additionalPhoto);
+                }
+            }
+
+
+            existBook.UpdatedAt = DateTime.Now;
+            existBook.Desc = bookVM.Desc;
+            existBook.Title = bookVM.Title;
+            existBook.AuthorId = bookVM.AuthorId;
+            existBook.GenreId = bookVM.GenreId;
+            existBook.CostPrice = bookVM.CostPrice;
+            existBook.SalePrice = bookVM.SalePrice;
+            existBook.StockCount = bookVM.StockCount;
+            existBook.Discount = bookVM.Discount;
+            existBook.ProductCode = bookVM.ProductCode;
+
+            await bookRepository.CommitAsync();
         }
 
         public async Task<Book> GetByExpressionAsync(Expression<Func<Book, bool>> expression, params string[] includes)
