@@ -109,35 +109,9 @@ namespace Pustok.MVC.Controllers
             return Ok(basketItems);
         }
 
-
-        //public IActionResult SetCookie(int id)
-        //{
-        //    List<int> Ids = new List<int>();
-        //    var existList = HttpContext.Request.Cookies["Ids"];
-        //    if (existList != null)
-        //    {
-        //        Ids = JsonConvert.DeserializeObject<List<int>>(existList);
-        //    }
-        //    Ids.Add(id);
-
-        //    existList = JsonConvert.SerializeObject(Ids);
-
-        //    HttpContext.Response.Cookies.Append("Ids", existList);
-
-        //    return Content("Added");
-        //}
-        //public IActionResult GetCookie()
-        //{
-        //    string data = HttpContext.Request.Cookies["Ids"];
-        //    List<int> Ids = new List<int>();
-        //    if (data != null)
-        //    {
-        //        Ids = JsonConvert.DeserializeObject<List<int>>(data);
-        //    }
-
-
-        //    return Ok(Ids);
-        //}
-
+        public IActionResult BasketUpdate()
+        {
+            return ViewComponent("Basket");
+        }
     }
 }

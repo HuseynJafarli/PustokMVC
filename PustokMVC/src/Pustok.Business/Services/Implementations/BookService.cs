@@ -157,9 +157,13 @@ namespace Pustok.Business.Services.Implementations
             return await bookRepository.GetAll(expression, includes).OrderByDescending(orderExpression).ToListAsync();
         }
 
-        public Task<Book> GetByIdAsync(int? id)
+        public async Task<Book> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            if (id <= 0 || id == null)
+            {
+                throw new IdIsNotValid("Id is not valid");
+            }
+            return await bookRepository.GetByIdAsync(id);
         }
 
         public Task<bool> IsExist(Expression<Func<Book, bool>> expression)
@@ -170,6 +174,12 @@ namespace Pustok.Business.Services.Implementations
         public Task UpdateAsync(int? id, BookUpdateVM vm)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Book> GetByExpressionAsync(Expression<Func<Book, bool>> expression, params string[] includes)
+        {
+            Book data = await bookRepository.GetByExpressionAsync(expression, includes) ?? throw new IdIsNotValid();
+            return data;
         }
     }
 }

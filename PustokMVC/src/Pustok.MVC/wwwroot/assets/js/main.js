@@ -9,10 +9,21 @@ basketBtns.forEach(btn => {
         fetch(url)
             .then(response => {
                 if (response.status == 200) {
-                    alert("Added!")
+                    alert("Added!");
+                    /*$('.cart-block').load('/Basket/InvokeComponent');*/
+                    UpdateBasket();
                 } else {
                     alert("Book Not Found!")
                 }
             })
     })
 })
+
+function UpdateBasket() {
+    fetch('/Home/BasketUpdate')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.cart-block').insertAdjacentHTML() = html;
+        })
+        .catch(error => console.error('Error updating basket:', error));
+}

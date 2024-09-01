@@ -1,0 +1,50 @@
+﻿@model List<ItemInCartVM>
+
+@{
+    int cnt = 0;
+    int sum = 0;
+
+    foreach (var item in Model)
+    {
+        cnt += item.Count;
+        sum += (int)(item.Count * (item.Book.SalePrice - (item.Book.Discount * item.Book.SalePrice / 100)));
+    }
+}
+
+<div class="cart-total">
+    <span class="text-number">
+        @cnt
+    </span>
+    <span class="text-item">
+        Shopping Cart
+    </span>
+    <span class="price">
+        £@sum
+        <i class="fas fa-chevron-down"></i>
+    </span>
+</div>
+<div class="cart-dropdown-block">
+    @foreach (var item in Model)
+    {
+        <div class="single-cart-block">
+            <div class="cart-product">
+                <a href="product-details.html" class="image">
+                    <img src="~/uploads/books/@item.Book.BookImages.FirstOrDefault(x => x.IsPoster == true).ImageUrl" alt="@item.Book.Title">
+                </a>
+                <div class="content">
+                    <h3 class="title">
+                        <a href="product-details.html">@item.Book.Title</a>
+                    </h3>
+                    <p class="price"><span class="qty">@item.Count ×</span> £@(item.Book.SalePrice - (item.Book.Discount * item.Book.SalePrice / 100))</p>
+                    <button class="cross-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="single-cart-block">
+        <div class="btn-block">
+            <a href="cart.html" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
+            <a href="checkout.html" class="btn btn--primary">Check Out <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+</div>
