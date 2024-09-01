@@ -22,6 +22,8 @@ namespace Pustok.MVC
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<IBookImageRepository, BookImageRepository>();
+            builder.Services.AddScoped<ISlideService, SlideService>();
+            builder.Services.AddScoped<ISlideRepository, SlideRepository>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));

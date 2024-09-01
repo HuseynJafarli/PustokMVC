@@ -54,18 +54,34 @@ namespace Pustok.MVC.Areas.Admin.Controllers
             catch(EntityNotFoundException ex)
             {
                 ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View(vm);
             }
             catch (FileValidationException ex)
             {
                 ModelState.AddModelError(ex.PropertyName, ex.Message);
+                return View(vm);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
-                return View();
+                return View(vm);
             }
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            try
+            {
+                await bookService.DeleteAsync(id);
+            }
+            catch (IdIsNotValid)
+            {
+                return View("Id is not valid");
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

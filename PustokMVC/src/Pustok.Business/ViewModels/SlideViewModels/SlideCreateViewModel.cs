@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pustok.Business.ViewModels.SlideViewModels
+namespace Pustok.Business.ViewModels
 {
     public class SlideCreateViewModel
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public int Order { get; set; }
         [Required]
         public IFormFile Photo { get; set; }
     }

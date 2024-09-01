@@ -7829,6 +7829,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\custom.js"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\assets\\js\\main.js",
+      "PackagePath": "staticwebassets\\assets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\assets\\js\\plugins.js",
       "PackagePath": "staticwebassets\\assets\\js\\plugins.js"
     },
@@ -8061,48 +8065,56 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\07179bbb-f4b3-4bd1-b076-9cc388cf8489Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\07179bbb-f4b3-4bd1-b076-9cc388cf8489Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\06c6f722-b0e6-471e-b474-6ca32ba4032eproduct-4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\06c6f722-b0e6-471e-b474-6ca32ba4032eproduct-4.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\3933c470-0e62-45d9-a6bd-71f5e1ee55d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\3933c470-0e62-45d9-a6bd-71f5e1ee55d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\1ef17952-2f6e-45e4-bfda-4a88a20430b4product-4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\1ef17952-2f6e-45e4-bfda-4a88a20430b4product-4.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\5a5c0e16-596f-4db8-b60e-dc9643492e32Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\5a5c0e16-596f-4db8-b60e-dc9643492e32Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\3cd3dfba-cd14-4101-aafc-628273c85c99product-details-3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\3cd3dfba-cd14-4101-aafc-628273c85c99product-details-3.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\69460bfe-3478-490a-977f-2261d37621e2Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\69460bfe-3478-490a-977f-2261d37621e2Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\43eef45b-0d16-4c69-a9bd-f82a85ecf1beproduct-1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\43eef45b-0d16-4c69-a9bd-f82a85ecf1beproduct-1.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\7cdf3122-36f8-446a-9882-65636bb4f309theory roadmap.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\7cdf3122-36f8-446a-9882-65636bb4f309theory roadmap.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\522a7bad-8732-460c-b7c0-b514ae5a6bbbproduct-3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\522a7bad-8732-460c-b7c0-b514ae5a6bbbproduct-3.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\8c6992c0-b581-4a86-b28c-1ef1ef9c58fftheory roadmap.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\8c6992c0-b581-4a86-b28c-1ef1ef9c58fftheory roadmap.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\75155995-a555-44b9-8aaf-2d6c163beadfproduct-2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\75155995-a555-44b9-8aaf-2d6c163beadfproduct-2.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\9bbee3ab-f977-4385-8264-d1f5a1f6527cFretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\9bbee3ab-f977-4385-8264-d1f5a1f6527cFretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\8d2b482c-31fb-426b-a0a2-6b4b7f177d41product-12.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\8d2b482c-31fb-426b-a0a2-6b4b7f177d41product-12.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\9f03c675-b2ce-43e3-b868-1baf48710b73theory roadmap.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\9f03c675-b2ce-43e3-b868-1baf48710b73theory roadmap.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\9c6f44a7-2d14-4f16-b8ad-f99fb48ca6dbproduct-2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\9c6f44a7-2d14-4f16-b8ad-f99fb48ca6dbproduct-2.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\c98be73c-c1e2-4308-ac3e-e99cf81b33d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\c98be73c-c1e2-4308-ac3e-e99cf81b33d7Fretboard_Notes_RGB_Black_Stave_Lines_image.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\ace74787-187a-4271-ac9d-8d12351ae52fproduct-details-2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\ace74787-187a-4271-ac9d-8d12351ae52fproduct-details-2.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\daf6d16b-bd52-4021-ab8b-3e44dad05ce9theory roadmap.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\daf6d16b-bd52-4021-ab8b-3e44dad05ce9theory roadmap.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\ce21868b-e45f-430c-a71b-60f29b20bf1cproduct-11.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\ce21868b-e45f-430c-a71b-60f29b20bf1cproduct-11.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\ed82afdb-6927-4110-b4e0-a54d00044a0ftheory roadmap.png",
-      "PackagePath": "staticwebassets\\uploads\\books\\ed82afdb-6927-4110-b4e0-a54d00044a0ftheory roadmap.png"
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\books\\d86fe38f-d7e3-4121-a7cd-95f1a9ad12ecproduct-details-5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\books\\d86fe38f-d7e3-4121-a7cd-95f1a9ad12ecproduct-details-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\slides\\93dcf088-8b30-4b7d-858d-da225183528bhome-slider-1-ai.png",
+      "PackagePath": "staticwebassets\\uploads\\slides\\93dcf088-8b30-4b7d-858d-da225183528bhome-slider-1-ai.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\PustokMVC\\PustokMVC\\src\\Pustok.MVC\\wwwroot\\uploads\\slides\\e4ffdf8d-2313-4d4d-838c-775606dfe007home-slider-2-ai.png",
+      "PackagePath": "staticwebassets\\uploads\\slides\\e4ffdf8d-2313-4d4d-838c-775606dfe007home-slider-2-ai.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Pustok.MVC.Microsoft.AspNetCore.StaticWebAssets.props",

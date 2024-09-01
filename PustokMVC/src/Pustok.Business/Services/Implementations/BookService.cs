@@ -63,7 +63,7 @@ namespace Pustok.Business.Services.Implementations
 
             if (vm.PosterImage != null)
             {
-                if (vm.PosterImage.ContentType != "image/png")
+                if (!vm.PosterImage.ContentType.StartsWith("image/"))
                 {
                     throw new FileValidationException("PosterImage", "File type is not correct");
                 }
@@ -82,52 +82,52 @@ namespace Pustok.Business.Services.Implementations
                     Book = book,
                 };
                 await bookImageRepository.CreateAsync(bookImage);
-            }
 
-            if (vm.HoverImage is not null)
-            {
-                if (vm.HoverImage.ContentType != "image/png")
+                if (vm.HoverImage is not null)
                 {
-                    throw new FileValidationException("HoverImage", "File type is not correct");
-                }
-                if (vm.HoverImage.Length > 2 * 1024 * 1024)
-                {
-                    throw new FileValidationException("HoverImage", "File size should be less than 2mb");
-                }
-                BookImage bookImage = new BookImage()
-                {
-                    ImageUrl = vm.HoverImage.SaveFile(env.WebRootPath, "uploads/books"),
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                    IsDeleted = false,
-                    IsPoster = true,
-                    Book = book,
-                };
-                await bookImageRepository.CreateAsync(bookImage);
-            }
-
-            if (vm.ImageFiles.Count > 0)
-            {
-                foreach (var image in vm.ImageFiles)
-                {
-                    if (image.ContentType != "image/png")
+                    if (!vm.HoverImage.ContentType.StartsWith("image/"))
                     {
-                        throw new FileValidationException("ImageFiles", "File type is not correct");
+                        throw new FileValidationException("HoverImage", "File type is not correct");
                     }
-                    if (image.Length > 2 * 1024 * 1024)
+                    if (vm.HoverImage.Length > 2 * 1024 * 1024)
                     {
-                        throw new FileValidationException("ImageFiles", "File size should be less than 2mb");
+                        throw new FileValidationException("HoverImage", "File size should be less than 2mb");
                     }
-                    BookImage bookImage = new BookImage()
+                    BookImage bookImage2 = new BookImage()
                     {
-                        ImageUrl = image.SaveFile(env.WebRootPath, "uploads/books"),
+                        ImageUrl = vm.HoverImage.SaveFile(env.WebRootPath, "uploads/books"),
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now,
                         IsDeleted = false,
-                        IsPoster = true,
+                        IsPoster = false,
                         Book = book,
                     };
-                    await bookImageRepository.CreateAsync(bookImage);
+                    await bookImageRepository.CreateAsync(bookImage2);
+
+                    if (vm.ImageFiles.Count > 0)
+                    {
+                        foreach (var image in vm.ImageFiles)
+                        {
+                            if (!image.ContentType.StartsWith("image/"))
+                            {
+                                throw new FileValidationException("ImageFiles", "File type is not correct");
+                            }
+                            if (image.Length > 2 * 1024 * 1024)
+                            {
+                                throw new FileValidationException("ImageFiles", "File size should be less than 2mb");
+                            }
+                            BookImage bookImage3 = new BookImage()
+                            {
+                                ImageUrl = image.SaveFile(env.WebRootPath, "uploads/books"),
+                                CreatedAt = DateTime.Now,
+                                UpdatedAt = DateTime.Now,
+                                IsDeleted = false,
+                                IsPoster = null,
+                                Book = book,
+                            };
+                            await bookImageRepository.CreateAsync(bookImage3);
+                        }
+                    }
                 }
             }
 
@@ -135,9 +135,16 @@ namespace Pustok.Business.Services.Implementations
             await bookRepository.CommitAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int? id)
         {
-            throw new NotImplementedException();
+            Book data = await bookRepository.GetByIdAsync(id, "BookImages", "Author", "Genre") ?? throw new IdIsNotValid();
+
+            foreach (var item in data.BookImages)
+            {
+                item.ImageUrl.DeleteFile(env.WebRootPath, "uploads", "books");
+            }
+            bookRepository.Delete(data);
+            await bookRepository.CommitAsync();
         }
 
         public async Task<ICollection<Book>> GetAllAsync(Expression<Func<Book, bool>> expression, params string[] includes)
@@ -145,9 +152,19 @@ namespace Pustok.Business.Services.Implementations
             return await bookRepository.GetAll(expression, includes).ToListAsync();
         }
 
+        public async Task<ICollection<Book>> GetAllByOrderAsync(Expression<Func<Book, bool>> expression, Expression<Func<Book, dynamic>> orderExpression, params string[] includes)
+        {
+            return await bookRepository.GetAll(expression, includes).OrderByDescending(orderExpression).ToListAsync();
+        }
+
         public Task<Book> GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
+        }
+
+        public Task<bool> IsExist(Expression<Func<Book, bool>> expression)
+        {
+            return bookRepository.Table.AnyAsync(expression);
         }
 
         public Task UpdateAsync(int? id, BookUpdateVM vm)
