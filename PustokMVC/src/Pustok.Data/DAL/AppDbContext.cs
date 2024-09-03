@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pustok.Core.Models;
 using Pustok.Data.Configurations;
 
 namespace Pustok.Data.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
 
@@ -13,6 +14,7 @@ namespace Pustok.Data.DAL
         public DbSet<BookImage> BookImages { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Slide> Slides { get; set; }
+         public DbSet<AppUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -25,7 +25,7 @@ namespace Pustok.MVC.ViewComponents
 
                 foreach (var item in basketItems)
                 {
-                    var book = await _bookService.GetByIdAsync(item.BookId);
+                    var book = await _bookService.GetByExpressionAsync(x => x.Id == item.BookId , "BookImages");
                     item.Book = book;
                 }
             }

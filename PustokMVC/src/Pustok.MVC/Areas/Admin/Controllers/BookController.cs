@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Business.Exceptions;
 using Pustok.Business.Services.Implementations;
@@ -11,6 +12,7 @@ using Pustok.Core.Repositories;
 namespace Pustok.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    
     public class BookController : Controller
     {
         private readonly IAuthorService authorService;
@@ -26,18 +28,20 @@ namespace Pustok.MVC.Areas.Admin.Controllers
             this.genreService = genreService;
             this.bookService = bookService;
         }
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Index()
         {
 
             return View(await bookService.GetAllAsync(x => !x.IsDeleted , "BookImages" , "Genre" , "Author"));
         }
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Create()
         {
             ViewBag.Genres = await genreService.GetAllAsync(x => !x.IsDeleted);
             ViewBag.Authors = await authorService.GetAllAsync(x => !x.IsDeleted);
             return View();
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BookCreateVM vm)
@@ -69,7 +73,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             try
@@ -83,7 +87,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Update(int? id)
         {
             ViewBag.Genres = await genreService.GetAllAsync(x => !x.IsDeleted);
@@ -119,7 +123,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return View(bookVM);
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int? id, BookUpdateVM bookVM)

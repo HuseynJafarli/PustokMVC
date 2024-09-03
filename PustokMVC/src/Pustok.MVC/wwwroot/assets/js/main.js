@@ -23,7 +23,7 @@ function UpdateBasket() {
     fetch('/Home/BasketUpdate')
         .then(response => response.text())
         .then(html => {
-            document.querySelector('.cart-block').insertAdjacentHTML() = html;
+            document.querySelector('.cart-block').innerHTML = html;
         })
         .catch(error => console.error('Error updating basket:', error));
 }

@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Business.Services.Implementations;
 using Pustok.Business.Services.Interfaces;
+using Pustok.Core.Models;
 using Pustok.Core.Repositories;
 using Pustok.Data.DAL;
 using Pustok.Data.Repositories;
@@ -28,6 +30,16 @@ namespace Pustok.MVC
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
+            builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.User.RequireUniqueEmail = true;
+                opt.Password.RequiredUniqueChars = 1;
+                opt.Password.RequireNonAlphanumeric = true;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireDigit = true;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Pustok.Business.Exceptions;
 using Pustok.Business.Services.Implementations;
 using Pustok.Business.Services.Interfaces;
@@ -15,11 +16,12 @@ namespace Pustok.MVC.Areas.Admin.Controllers
         {
             this.slideService = slideService;
         }
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await slideService.GetAllAsync());
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult Create()
         {
             return View();
@@ -27,6 +29,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Create(SlideCreateViewModel vm)
         {
             if (!ModelState.IsValid)
@@ -50,6 +53,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             try
@@ -63,7 +67,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Update(int id)
         {
             var data = await slideService.GetByIdAsync(id) ?? throw new NullReferenceException();
@@ -80,6 +84,7 @@ namespace Pustok.MVC.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public async Task<IActionResult> Update(int id, SlideUpdateViewModel slideVM)
         {
             if (!ModelState.IsValid)
