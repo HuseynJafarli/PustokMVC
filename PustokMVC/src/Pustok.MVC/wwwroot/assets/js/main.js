@@ -8,6 +8,7 @@ basketBtns.forEach(btn => {
 
         fetch(url)
             .then(response => {
+                console.log(response);
                 if (response.status == 200) {
                     alert("Added!");
                     /*$('.cart-block').load('/Basket/InvokeComponent');*/

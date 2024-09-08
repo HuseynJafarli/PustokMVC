@@ -15,7 +15,7 @@ namespace Pustok.Data.DAL
         public DbSet<Author> Authors { get; set; }
         public DbSet<Slide> Slides { get; set; }
          public DbSet<AppUser> Users { get; set; }
-
+        public DbSet<BasketItem> BasketItems { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BookConfiguration).Assembly);
