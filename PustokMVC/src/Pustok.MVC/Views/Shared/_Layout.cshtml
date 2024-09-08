@@ -331,7 +331,7 @@
                                     else
                                     {
                                         <div class="login-block">
-                                            <a href="login-register.html" class="font-weight-bold">@Context.User.Identity.Name</a> <br>
+                                            <a asp-action="profile" asp-controller="account" class="font-weight-bold">@Context.User.Identity.Name</a> <br>
                                             <a asp-action="logout" asp-controller="account">Logout</a>
                                         </div>
                                     }

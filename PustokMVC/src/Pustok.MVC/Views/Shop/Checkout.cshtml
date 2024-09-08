@@ -4,7 +4,7 @@
     double sum = 0;
     foreach (var book in Model.CheckoutVMs)
     {
-        sum += (book.Count * (book.Book.SalePrice - (book.Book.Discount * book.Book.SalePrice / 100)));
+        sum += Math.Round(book.Count * (book.Book.SalePrice - (book.Book.Discount * book.Book.SalePrice / 100)), 2);
     }
 }
 

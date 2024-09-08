@@ -7,9 +7,7 @@ using Pustok.Business.Utilities.Extensions;
 using Pustok.Business.ViewModels;
 using Pustok.Core.Models;
 using Pustok.Core.Repositories;
-using Pustok.Data.Repositories;
 using System.Linq.Expressions;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Pustok.Business.Services.Implementations
 {

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Pustok.Business.ExternalServices.Implementations;
+using Pustok.Business.ExternalServices.Interfaces;
 using Pustok.Business.Services.Implementations;
 using Pustok.Business.Services.Interfaces;
 using Pustok.Core.Models;
@@ -26,6 +28,7 @@ namespace Pustok.MVC
             builder.Services.AddScoped<IBookImageRepository, BookImageRepository>();
             builder.Services.AddScoped<ISlideService, SlideService>();
             builder.Services.AddScoped<ISlideRepository, SlideRepository>();
+            builder.Services.AddTransient<IEmailService,EmailService>();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));

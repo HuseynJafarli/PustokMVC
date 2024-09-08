@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pustok.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,9 @@ namespace Pustok.Core.Models
         public string Address { get; set; }
         public string ZipCode { get; set; }
         public string Note { get; set; }
-        //public OrderStatus OrderStatus { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public string? AppUserId { get; set; }
-        public decimal TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
         public AppUser AppUser { get; set; }
         public List<OrderItem> OrderItems { get; set; }
     }

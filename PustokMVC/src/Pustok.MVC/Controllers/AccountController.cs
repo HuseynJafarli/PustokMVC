@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Core.Models;
@@ -126,6 +127,25 @@ namespace Pustok.MVC.Controllers
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Login", "Account");
+        }
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> Profile()
+        {
+            AppUser appUser = null;
+            if(HttpContext.User.Identity.IsAuthenticated)
+            {
+                appUser = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
+            }
+            if (appUser == null)
+            {
+                return RedirectToAction("login");
+            }
+            else
+            {
+                List<Order> orders = await _appDbContext.Orders.Include(x => x.OrderItems).Where(x => x.AppUserId == appUser.Id && x.IsDeleted == false).ToListAsync();
+                return View(orders);
+
+            }
         }
     }
 }
